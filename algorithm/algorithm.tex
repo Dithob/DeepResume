@@ -1,0 +1,304 @@
+\documentclass[10pt]{article}
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{xeCJK}
+
+\hypersetup{hidelinks}
+\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%
+% 设置
+%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagenumbering{gobble}
+\setlist[itemize]{
+    leftmargin=1.35em,
+    itemsep=0.12em,
+    topsep=0.18em,
+    parsep=0pt,
+    partopsep=0pt
+}
+\setlist[enumerate]{leftmargin=*}
+\renewcommand{\arraystretch}{1.12}
+\linespread{1.08}
+
+\titleformat{\section}
+  {\Large\bfseries\raggedright}
+  {}{0em}
+  {}
+  [{\color{secondarycolor}\titlerule}]
+\titlespacing*{\section}{0pt}{0.55em}{0.28em}
+
+\usepackage[
+    a4paper,
+    left=1.1cm,
+    right=1.1cm,
+    top=0.75cm,
+    bottom=0.85cm,
+    nohead
+]{geometry}
+
+% 字体设置
+\setCJKmainfont[
+    Path=fonts/,
+    Extension=.otf,
+    BoldFont=*-Bold,
+]{NotoSerifSC}
+
+% 自定义颜色
+\definecolor{primarycolor}{RGB}{200, 60, 60}
+\definecolor{secondarycolor}{RGB}{200, 68, 28}
+
+\newlength{\iconwidth}
+\setlength{\iconwidth}{1.5em}
+
+\newcommand{\projectheading}[3]{%
+    \noindent\makebox[\textwidth][s]{%
+        \makebox[0pt][l]{{\large \textbf{#1}}}%
+        \hfill
+        \makebox[0pt][c]{{\normalsize \textbf{#2}}}%
+        \hfill
+        \makebox[0pt][r]{#3}%
+    }%
+}
+
+%%%%%%%%%%%%%%%%%%%%
+% 文章内容
+%%%%%%%%%%%%%%%%%%%%
+
+% 联系方式
+\newcommand{\contact}{
+    \footnotesize
+    \textcolor{white}{
+        \faEnvelope \quad 邮箱：\href{mailto:xxx@qq.com}{250xxxxxxx@qq.com}
+        \hspace{3.2em}
+        \faPhone \quad 电话：198xxxxxxxx
+        \hspace{3.2em}
+        \faGithub \quad 主页：\href{https://github.com/Dithob}{github.com/Dithob}
+    }
+}
+
+\begin{document}
+
+    % 顶部联系人栏
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north, inner sep=0pt](headercontacts) at (current page.north){
+            \includegraphics[width=\paperwidth]{images/foot.png}
+        };
+        \node[anchor=center] at(headercontacts.center){\contact};
+    \end{tikzpicture}
+    \vspace{-1.15em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 个人信息与教育背景
+    %%%%%%%%%%%%%%%%%%%%
+
+    \begin{minipage}[t]{0.79\textwidth}
+        \section[个人信息]{\makebox[\iconwidth][c]{\color{primarycolor}{\faAddressCard}}\quad 个人信息}
+        % {\small
+        \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll}
+            \textbf{姓\qquad 名}：无绝 & \textbf{出生年月}：2002.10 & \textbf{籍\qquad 贯}：湖北咸宁 \\
+            \textbf{学\qquad 校}：重庆邮电大学  & \textbf{英语水平}：CET-6 & \textbf{求职方向}：AI 应用开发
+        \end{tabular*}
+        % }
+        % \vspace{0.45em}
+
+        \section[教育背景]{\makebox[\iconwidth][c]{\color{primarycolor}{\faGraduationCap}}\quad 教育背景}
+        {\textbf{重庆邮电大学}}，计算机技术，\textit{硕士} \hfill 2024.09--2027.06
+        \begin{itemize}
+            \item \textbf{荣誉奖项}：特等学业奖学金 $\times$ 1、二等学业奖学金 $\times$ 1
+        \end{itemize}
+
+        \vspace{0.2em}
+        {\textbf{重庆邮电大学}}，计算机科学与技术，\textit{本科} \hfill 2020.09--2024.07
+        \begin{itemize}
+            \item \textbf{荣誉奖项}：三等学业奖学金；GPA: 3.28/4.0（专业前 25\%）
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.14\textwidth}
+        \vspace{-0.35em}
+        \setlength{\fboxsep}{0pt}
+        \doublebox{\includegraphics[width=\linewidth]{images/xjpic.jpg}}
+    \end{minipage}
+    % \vspace{0.45em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 专业技能
+    %%%%%%%%%%%%%%%%%%%%
+
+    \section[专业技能]{\makebox[\iconwidth][c]{\color{primarycolor}{\faWrench}}\quad 专业技能}
+    \begin{itemize}
+        \item \textbf{AI 应用开发}：
+        熟悉 Dify、LangChain 等 LLM 应用开发框架，能够围绕业务场景设计 RAG 问答、工具调用、多 Agent 协作与结构化输出流程，并使用 FastAPI 封装大模型服务接口；
+        理解 Harness Engineering、Agent Memory 等Agent核心机制，熟悉 Open Claw、Hermes 等 AI Agent 的架构与原理；熟练应用 Claude Code、Codex、Qoder 等 AI 编程工具。
+        % \item \textbf{RAG 与检索增强}：熟悉文档 ETL、Chunk 切分、Embedding、Milvus 向量检索、BM25 关键词召回、RRF 融合与 Rerank 精排；能够构建知识库检索链路，并通过相似度阈值、拒答策略和 Bad Case 回流降低幻觉风险。
+        \item \textbf{模型微调与推理优化}：
+        理解 Transformer、自注意力 等底层架构原理；
+        % 理解 Transformer、自注意力 等底层架构原理、掌握 Prompt Engineering、CoT 等提示工程技巧；
+        了解 SFT 与 PPO 等训练范式，熟悉 LoRA 等微调方法，具备 Qwen 微调与模型 API 集成经验，熟悉 vLLM 推理部署以及KV Cache 管理与连续批处理调优。
+        \item \textbf{计算机基础与工程能力}：
+        掌握数据结构、计算机网络、数据库原理等基础知识；
+        掌握 Python 语言；熟悉 MySQL/SQLite 数据库设计与优化，理解 Redis 核心数据结构及缓存架构；
+        熟悉Linux常用操作，掌握 Docker容器化部署与 Git 版本控制；
+        了解测试理论，能熟练运用 Postman/JMeter进行接口联调与性能压测，具备完整的环境隔离与工程交付能力。
+        % \item \textbf{全栈与 AI 协作开发}：
+        % 熟悉 \textbf{Vue.js/Element} 前端生态与 \textbf{Spring Boot/MyBatis} 后端框架，具备前后端分离项目的独立闭环开发能力；
+        % 熟练应用 Claude Code、Codex、Qoder 等 AI 编程工具，并在项目中实践 \textbf{MCP Server、Agent SKILL} 等前沿范式，大幅提升开发效能。
+    \end{itemize}
+
+    % \vspace{0.45em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 实习经历
+    %%%%%%%%%%%%%%%%%%%%
+
+    \section[实习经历]{\makebox[\iconwidth][c]{\color{primarycolor}{\faBriefcase}}\quad 实习经历}
+
+    \projectheading{重庆啄木鸟网络科技有限公司}{算法工程师}{2025.06--2025.09}
+    \begin{itemize}
+        \item \textbf{核心职责}：参与家电售后场景的大模型应用研发，覆盖需求分析、数据清洗、模型调研与训练、Prompt/RAG 流程优化、接口设计与测试、FastAPI 服务封装及部署联调等环节。
+        \item \textbf{小啄 GPT 智能回复模型}：
+        针对多轮客服对话中的上下文丢失、槽位遗漏与知识检索不准问题，设计“短期记忆 + 长期摘要 + 结构化状态”机制，用 JSON 维护家电类型、故障现象、预约时间等关键状态；
+        针对生成环节，对 Qwen 模型进行微调，注入家电维修领域知识与标准客服话术，有效抑制模型幻觉，使最终回复的业务采纳率提升约 10\%；
+        结合 Dense/BM25 双路召回、RRF 融合与 Rerank 精排构建维修知识检索链路，使长尾 Query 检索 Hit Rate 提升约 20\%，提升长轮次对话的流程控制与回复可靠性。
+        % \item \textbf{智能产品识别与意图理解}：
+        % 参与智能产品识别、用户意图识别等模块迭代，设计工作流从用户咨询中抽取品牌、型号、品类、故障现象等结构化槽位，并判断对话意图类型；
+        % 通过 问题重写 规范口语化/残缺 问询，结合语义匹配、RAG 知识库检索与动态追问策略完成候选产品召回、槽位补全和低置信度确认；
+        % 支撑 1000+ 类产品识别和 20+ 类用户意图实时识别，为后续精准问答、工单分发与人工兜底提供结构化依据。
+    \end{itemize}
+
+    % \vspace{0.45em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 项目经历
+    %%%%%%%%%%%%%%%%%%%%
+
+    \section[项目经历]{\makebox[\iconwidth][c]{\color{primarycolor}{\faProjectDiagram}}\quad 项目经历}
+    % AI 应用开发 / 大模型应用岗
+    \projectheading{基于 RAG 的医药数据分析问答助手}{项目主要成员}{2025.10--2026.02}
+    % 算法 / NLP / LLM 工程岗
+    % \projectheading{医药供应链 Text-to-SQL 数据分析助手（校企合作）}{项目主要成员}{2025.10--2026.02}
+    \begin{itemize}
+        \item \textbf{项目目标}：面向药品采购、零售、库存等全链路数据及 800 余张业务表，基于 Dify、LangChain、Milvus 与 MySQL 建设 LLM 数据分析问答助手，将销售人员的自然语言问题转化为可执行 SQL 与可读分析结论。
+        \item \textbf{应用架构设计}：负责 LLM 应用核心链路设计，基于 Dify 完成 工作流 编排与模型接入，设计“问题理解--Schema 检索--SQL 生成--结果解释--人工反馈”业务链路，降低业务人员直接理解复杂数据库结构的门槛。
+        \item \textbf{表结构理解与字段召回}：对数据字典进行元数据增强，将表名、字段名、字段含义和常见枚举值拼接为富文本后向量化；结合 业务规则过滤、问题类型判断、样例对与 CoT ，引导模型优先选择相关表和字段，提高 SQL 生成稳定性。
+        % \item \textbf{表结构理解与字段召回}：对数据字典进行元数据增强，将表名、字段名、字段含义和常见枚举值拼接为富文本后向量化；结合 HNSW 索引、标量过滤、规则化问题分类、样例对与 CoT ，引导模型优先选择相关表和字段，提高多表关联、专业术语和时间/分类条件下的 SQL 生成稳定性。
+        \item \textbf{评估与自修正闭环}：引入 SQL 预执行与 自纠错 机制，捕获 MySQL Error 信息后回传给 LLM 重写；构建约 200 条 Golden Dataset，结合 RAGAS 指标、执行准确率 与人工反馈 Bad Case 回流评估检索和 SQL 结果，执行成功率由约 70\% 提升至 90\%+，项目获重庆市人工智能大赛市级银奖。
+    \end{itemize}
+
+    \vspace{0.35em}
+    \projectheading{多模态家电识别与知识库入库系统}{项目主要负责人}{2025.06--2025.09}
+    % \projectheading{基于多模态识别的家电知识库入库系统}{项目主要负责人}{2025.06--2025.09}
+    \begin{itemize}
+        \item \textbf{项目目标}：面向家电售后知识库建设场景，针对图片/OCR 识别信息不完整、长尾产品文本特征稀疏和重复入库问题，设计“识别--补全--校验--去重--入库”的自动化流程，降低人工录入和知识维护成本。
+        \item \textbf{识别与字段补全}：使用 Docker/Miniconda 统一部署 OCR/视觉大模型环境，基于 Dify 编排“图片识别--联网搜索--字段抽取--置信度校验”多 Agent 流程；结合 Query Rewrite 和动态 Prompt 模板补全品牌、型号、规格、品类等产品字段。
+        \item \textbf{检索增强与数据去重}：将识别文本、产品字段和知识库摘要向量化，结合向量相似度匹配、规则校验和低置信字段二次补全判断是否重复入库，减少同一产品多版本记录造成的知识库污染。
+        \item \textbf{服务封装与落地}：接入 vLLM 优化模型推理服务，并使用 FastAPI 封装识别、补全、去重和入库接口，统一对外提供可复用能力，支撑商品手册、维修手册和客服知识库的持续更新。
+    \end{itemize}
+
+    % \vspace{0.35em}
+    % \projectheading{汽车配件表格问答系统（LLM 项目）}{项目负责人}{2025.03--2025.06}
+    % \begin{itemize}
+    %     \item \textbf{项目目标}：面向汽车配件表格查询场景，构建本地化表格问答机器人，将用户自然语言问题转化为 SQL 查询，并对数据库结果进行摘要与解释，降低业务人员直接编写 SQL 的门槛。
+    %     \item \textbf{模型训练与增强}：采用 Qwen2.5 作为基线模型，基于有标签数据进行 SFT，并引入无标签数据开展强化学习训练，提升模型对表格问答、字段约束和业务表达的理解能力。
+    %     \item \textbf{工具调用与案例检索}：为模型配置数据库查询相关 Tools/Function Calling，并针对特例编写 Function；沉淀“问题--SQL--CoT”案例对并进行本地嵌入，用户提问时召回相似案例作为生成参考。
+    %     \item \textbf{多模型协同}：接入表格生成模型、低成本聊天模型等特定任务模型，按任务类型分流模型调用，支撑 SQL 查询、结果总结和表格生成等多类业务需求。
+    % \end{itemize}
+
+    % \vspace{0.35em}
+    % \projectheading{智能填表系统（RAG 项目）}{项目负责人}{2024.10--2025.02}
+    % \begin{itemize}
+    %     \item \textbf{项目目标}：面向复杂表单填写场景，构建基于本地参考文档与人员信息表的智能填表系统，使用户可通过自然语言描述需求，由大模型检索依据并生成符合要求的 Excel 表格。
+    %     \item \textbf{文档解析与摘要}：设计自定义 Reader 解析文档中的文本、图片和表格，将结构化与非结构化内容统一送入大模型生成摘要，为后续检索和填表提供可复用语义索引。
+    %     \item \textbf{多路召回检索}：使用 BGE-M3 对文档摘要、文本关键词和正文内容进行向量化，构建本地向量库；结合 BM25 与 Cosine Similarity 混合召回选择 Top-K 参考文档，提高模糊需求下的检索覆盖率。
+    %     \item \textbf{RAG 流程优化}：围绕“需求理解--文档召回--字段填充--表格导出”优化 RAG 链路，减少用户问答等待时间，并提升填表依据的可追溯性。
+    % \end{itemize}
+
+    % \vspace{0.35em}
+    % \projectheading{空气质量分析报告生成平台（LLM 项目）}{项目负责人}{2024.08--2024.10}
+    % \begin{itemize}
+    %     \item \textbf{项目目标}：面向重庆市 2023--2024 年近 6.2 万条空气质量数据，设计基于 LLM 的空气质量分析报告生成平台，支持研究人员通过自然语言完成多维度时空数据分析。
+    %     \item \textbf{应用架构设计}：主导 LLM 应用架构设计，基于 LangChain 构建 Agent 推理引擎，并使用 Streamlit 搭建低代码交互界面，完成数据查询、分析解释与报告生成流程。
+    %     \item \textbf{检索与语义解析}：结合 FAISS 向量检索、BERT 语义表示与 RAG 技术组织外部知识，实现上下文感知的 Text-to-SQL 语义解析，提升结构化数据查询的灵活性。
+    %     \item \textbf{工程化落地}：完成 LLM 工程化部署与多轮对话控制，使非技术用户可围绕城市、时间、污染物类型等条件自主获取分析结果。
+    % \end{itemize}
+
+    % \vspace{0.35em}
+    % \projectheading{视频内容分析与语义理解（校企合作项目）}{主要负责人}{2024.07--2025.01}
+    % \begin{itemize}
+    %     \item \textbf{项目目标}：面向视频语义理解场景，构建视频内容分析系统，实现视频分类与语义描述，并完成线上部署运行。
+    %     \item \textbf{数据与特征处理}：负责项目数据收集、清洗与预处理，制作视频理解数据集，并在时间和空间维度融合视频特征，提升模型对动态场景的表达能力。
+    %     \item \textbf{模型结构设计}：利用预训练 ViT 进行视觉编码，设计基于通道注意力的时序嵌入网络联合完成视频理解；使用 MobileNet 对语音信息进行编码，并与视频特征进行后期融合。
+    %     \item \textbf{部署交付}：使用阿里云服务器完成项目部署上线，支撑视频分类、描述生成和语义化理解等功能的在线运行。
+    % \end{itemize}
+
+    % \vspace{0.35em}
+    % \projectheading{多模态智能导盲车}{项目负责人}{2024.03--2024.06}
+    % \begin{itemize}
+    %     \item \textbf{项目目标}：通过多模态大模型实现用户与导盲车的智能交互和控制，支持语音指令理解、环境问答以及导航到指定地点等功能。
+    %     \item \textbf{多模态理解}：将深度相机、激光雷达、麦克风等传感器数据接入 InternLM2.5 多模态大模型，通过 CoT Prompt 理解传感器信息、小车状态和用户意图。
+    %     \item \textbf{Agent 工具调用}：设计多模态 Agent 调用链路，使模型可根据盲人语音指令选择导航、环境问答等工具，实现从感知理解到动作控制的闭环。
+    %     \item \textbf{系统架构与部署}：基于 ROS 搭建分布式架构，以 Raspberry Pi 4B 为核心开发板，负责多模态模型部署、微调、Prompt 设计和整体架构搭建。
+    % \end{itemize}
+
+    % \vspace{0.35em}
+    % \projectheading{催收策略效果评估（机器学习项目）}{项目负责人}{2024.03--2024.05}
+    % \begin{itemize}
+    %     \item \textbf{项目目标}：面向贷后催收历史数据和客户画像，构建催收策略预测与效果评估平台，将复杂业务诉求拆解为多分类预测、策略推荐与特征归因分析任务。
+    %     \item \textbf{建模方案}：基于 LightGBM 集成学习算法构建预测模型，整合信用历史、消费行为、动态账单等多维特征，输出不同客户群体下的催收手段决策建议。
+    %     \item \textbf{可解释性分析}：引入 SHAP 可解释性框架，对影响催收策略效果的关键因子进行特征归因，生成可解释的策略影响报告，辅助业务侧理解模型决策依据。
+    %     \item \textbf{业务评估闭环}：围绕模型预测结果与策略归因结果形成评估闭环，为催收策略制定、调优和复盘提供数据支撑。
+    % \end{itemize}
+
+    % \vspace{0.45em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 奖项证书
+    %%%%%%%%%%%%%%%%%%%%
+    \section[在校成果]{\makebox[\iconwidth][c]{\color{primarycolor}{\faAward}}\quad 在校成果}
+    % \section[证书/获奖/论文]{\makebox[\iconwidth][c]{\color{primarycolor}{\faAward}}\quad 证书/获奖/论文}
+    % \section[奖项证书]{\makebox[\iconwidth][c]{\color{primarycolor}{\faTrophy}}\quad 奖项证书}
+    \begin{itemize}
+        % \item \textbf{证书}：CET-6
+        \item \textbf{竞赛}：2025 “互联网+”大学生创新创业大赛银奖；2025 中国国际大学生创新大赛产业赛道校级二等奖；2025 首届重庆市 AI 大模型创新应用大赛省级三等奖
+        \item \textbf{论文}：《LHAF: A Lightweight Hierarchical Adaptive Framework for LLM-based Multimodal Emotion Recognition in Conversations》（SCI I 区在投）
+    \end{itemize}
+
+    \vspace{0.35em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 校园与科研经历
+    %%%%%%%%%%%%%%%%%%%%
+
+    % \section[校园与科研经历]{\makebox[\iconwidth][c]{\color{primarycolor}{\faFlask}}\quad 校园与科研经历}
+    % \begin{itemize}
+    %     \item \textbf{AI 竞赛实践}：参与 AI 大模型创新应用、互联网+、中国国际大学生创新大赛等竞赛项目，围绕大模型应用场景、技术方案设计与项目成果展示沉淀材料，相关项目获省级三等奖、银奖和校级二等奖。
+    %     \item \textbf{校企项目实践}：在医药供应链数据问答、家电售后知识库建设等校企/实习项目中，参与需求拆解、数据处理、RAG/Prompt 链路设计、接口联调与结果评估，积累从技术方案到项目交付的完整实践经验。
+    %     \item \textbf{科研训练}：围绕 LLM-based Multimodal Emotion Recognition in Conversations 方向开展科研训练，参与轻量化层次自适应框架相关论文工作，论文《LHAF: A Lightweight Hierarchical Adaptive Framework for LLM-based Multimodal Emotion Recognition in Conversations》SCI I 区在投。
+    % \end{itemize}
+    % \vspace{0.35em}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 自我评价
+    %%%%%%%%%%%%%%%%%%%%
+
+    % \section[自我评价]{\makebox[\iconwidth][c]{\color{primarycolor}{\faUserCheck}}\quad 自我评价}
+    % \begin{itemize}
+    %     \item \textbf{AI 应用落地能力}：具备 LLM、RAG、Text-to-SQL、多模态识别等项目实践，能围绕业务问题完成需求理解、方案拆解、Prompt/RAG 流程设计、服务封装与部署联调。
+    %     \item \textbf{问题闭环意识}：关注上下文丢失、槽位遗漏、检索不准、SQL 生成失败、重复入库等真实工程问题，能够通过 Golden Dataset、RAGAS 指标、Bad Case 回流和 SQL 预执行等方式持续优化效果。
+    %     \item \textbf{工程协作与学习迭代}：具备 Python、FastAPI、Docker、Git 等工程实践基础，熟悉接口联调、测试验证与项目复盘流程，能够结合 AI 编程工具提升开发效率并保持代码可维护性。
+    % \end{itemize}
+
+\end{document}
