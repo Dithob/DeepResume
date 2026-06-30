@@ -1,0 +1,41 @@
+services:
+  api:
+    build:
+      context: ./apps/api
+    environment:
+      DATABASE_URL: postgresql+psycopg://cv2offer:cv2offer@postgres:5432/cv2offer
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+
+  web:
+    build:
+      context: ./apps/web
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: cv2offer
+      POSTGRES_USER: cv2offer
+      POSTGRES_PASSWORD: cv2offer
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
