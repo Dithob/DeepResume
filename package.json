@@ -1,0 +1,14 @@
+{
+  "name": "cv2offer-agent",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "api:dev": "cd apps/api && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000",
+    "api:test": "cd apps/api && python -m pytest",
+    "web:dev": "npm --workspace apps/web run dev",
+    "web:build": "npm --workspace apps/web run build"
+  }
+}

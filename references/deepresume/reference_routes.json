@@ -1,0 +1,44 @@
+[
+  {
+    "id": "algorithm-ai-application",
+    "label": "算法 / AI 应用开发",
+    "resume_path": "algorithm/algorithm.md",
+    "resume_tex_path": "algorithm/algorithm.tex",
+    "guide_path": "algorithm/ai_algorithm_interview_guide/",
+    "learning_plan_path": "algorithm/ai_algorithm_interview_guide/01_learning_mainline.md",
+    "target_roles": [
+      "AI 应用开发工程师",
+      "LLM 应用工程师",
+      "RAG 工程师",
+      "Agent 应用工程师"
+    ]
+  },
+  {
+    "id": "frontend-ai-application",
+    "label": "前端开发 / AI 应用型前端",
+    "resume_path": "frontend/frontend.md",
+    "resume_tex_path": "frontend/frontend.tex",
+    "guide_path": "frontend/frontend_interview_guide/",
+    "learning_plan_path": "frontend/frontend_interview_guide/01_learning_mainline.md",
+    "target_roles": [
+      "前端开发工程师",
+      "AI 应用型前端",
+      "B 端前端工程师",
+      "低代码平台前端"
+    ]
+  },
+  {
+    "id": "testdevelop-quality-engineering",
+    "label": "测试开发 / 游戏测试",
+    "resume_path": "testdevelop/testdevelop.md",
+    "resume_tex_path": "testdevelop/testdevelop.tex",
+    "guide_path": "testdevelop/testdevelop_interview_guide/",
+    "learning_plan_path": "testdevelop/testdevelop_interview_guide/01_learning_mainline.md",
+    "target_roles": [
+      "测试开发工程师",
+      "自动化测试工程师",
+      "测试平台开发",
+      "游戏 QA 自动化"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 # 算法工程师 / AI 应用开发工程师求职攻略
 
-> 适用简历：[algorithm_resume.md](../algorithm_resume.md)  
+> 适用简历：[algorithm.md](../algorithm.md)  
 > 目标岗位：算法工程师、LLM 应用算法工程师、AI 应用开发工程师、RAG/Agent 工程方向  
 > 整理日期：2026-06-18
 
